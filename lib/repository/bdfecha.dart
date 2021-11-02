@@ -10,7 +10,7 @@ class bdfecha implements Repository<Object> {
 
   Future<int> insert(Map<String, dynamic> jsonAtri) async {
     Database database = await bd.openDB();
-    return database.insert("datosusuario", jsonAtri);
+    return 0;
   }
 
   Future<int> read(Map<String, dynamic> jsonAtri) async {
