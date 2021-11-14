@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "588489670768",
+    "project_id": "savecoinproyec",
+    "storage_bucket": "savecoinproyec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588489670768:android:332b614b49f01cd04db4b5",
+        "android_client_info": {
+          "package_name": "com.example.ahorrobasic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588489670768-j3f9r6jrio7kegf7ulpinah5omadhioi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ahorrobasic",
+            "certificate_hash": "cc8a0177530ea3b4da51cd5e8f73cf8865868977"
+          }
+        },
+        {
+          "client_id": "588489670768-ubb3pjps77vtrbc7fhj695l1lvr6mt1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANq9dNN0vShgZzX8e5-QJWVg46aDz0cEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588489670768-ubb3pjps77vtrbc7fhj695l1lvr6mt1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
