@@ -38,6 +38,7 @@ class insidebody extends State<insideview> {
     "monto_ahorrado": 10.0,
     "monto_init": 0,
   });
+  usuario uss = usuario.fromJson({});
   tiponame tip = tiponame.fromJson({});
   deuda deu = deuda.fromJson({});
   late TooltipBehavior _tooltipBehavior = TooltipBehavior(enable: true);
@@ -122,6 +123,7 @@ class insidebody extends State<insideview> {
 
   @override
   Widget build(BuildContext context) {
+    //-------------------------------------------------
     listcolor = [
       config.getcolorprimary,
       config.getcolorsecundary,
@@ -129,6 +131,7 @@ class insidebody extends State<insideview> {
       Colors.yellow.shade400
     ];
     valueprogres = confcoin.getmontoah;
+    //--------------------------------------------------
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -155,21 +158,53 @@ class insidebody extends State<insideview> {
           botondolarpen(),
           PopupMenuButton(
             padding: EdgeInsets.all(0),
-            icon: Container(
-              child: Center(
-                child: Container(
-                  height: config.getsizeaproxhight(30, context),
-                  width: 30,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade500,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.network(
-                                  "https://i.pinimg.com/564x/10/72/25/1072256f1921d4262bf910ce11ee90a3.jpg")
-                              .image)),
-                ),
-              ),
+            icon: FutureBuilder<List<usuario>>(
+              future: uss.getlist(usuario.fromJson({}), {}),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Ahorro_tu_dinero_mensual(this.confcoin);
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Error al cargar las categorias"),
+                  );
+                }
+                //------------------------------------------------
+                //capturar las categorias
+                var auxconfi = snapshot.data as List<usuario>;
+                if (auxconfi.length == 0)
+                  return Container(
+                    child: Center(
+                      child: Container(
+                        height: config.getsizeaproxhight(30, context),
+                        width: 30,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade500,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: Image.network(
+                                        "https://i.pinimg.com/564x/10/72/25/1072256f1921d4262bf910ce11ee90a3.jpg")
+                                    .image)),
+                      ),
+                    ),
+                  );
+                return Container(
+                  child: Center(
+                    child: Container(
+                      height: config.getsizeaproxhight(30, context),
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade500,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.network("${auxconfi[0].getphoto}")
+                                  .image)),
+                    ),
+                  ),
+                );
+              },
             ),
             itemBuilder: (BuildContext conte) {
               return [

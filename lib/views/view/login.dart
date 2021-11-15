@@ -147,7 +147,8 @@ class loginbody extends State<loginview> {
                                 print("${"no existe dentro del sistema"}");
                                 usuario usinser = usuario.fromJson({
                                   "code_name": uss.uid,
-                                  "name": uss.displayName
+                                  "name": uss.displayName,
+                                  "photo": uss.photoURL
                                 });
                                 // insertar a un usuario al sistema
                                 await usinser.insert(usinser, {});

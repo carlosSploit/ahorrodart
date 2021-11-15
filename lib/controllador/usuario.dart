@@ -8,16 +8,22 @@ class usuario implements Repository<usuario> {
   int idusuario = 0;
   String codename = "00000000";
   String name = "desconocido";
+  String photo =
+      "https://i.pinimg.com/736x/38/d4/b1/38d4b11793d3ce60de5c34d5abb2f7b2.jpg";
 
   usuario.fromJson(Map<String, dynamic> json) {
     idusuario = json.containsKey("id_usuario") ? json["id_usuario"] : 0;
     codename = json.containsKey("code_name") ? json["code_name"] : "00000000";
     name = json.containsKey("name") ? json["name"] : "desconocido";
+    photo = json.containsKey("photo")
+        ? json["photo"]
+        : "https://i.pinimg.com/736x/38/d4/b1/38d4b11793d3ce60de5c34d5abb2f7b2.jpg";
   }
 
   int get getidusuario => idusuario;
   String get getcodename => codename;
   String get getname => name;
+  String get getphoto => photo;
 
   Future<List<usuario>> getlist(
       usuario usua, Map<String, dynamic> jsonAtri) async {

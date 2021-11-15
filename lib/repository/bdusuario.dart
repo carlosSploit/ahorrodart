@@ -11,10 +11,10 @@ class bdusuario implements Repository<usuario> {
 
     if (us.getcodename.toString() == "00000000") {
       Datosusermap = await database
-          .rawQuery('''SELECT id_usuario FROM usuario WHERE estade = 1 ''');
+          .rawQuery('''SELECT * FROM usuario WHERE estade = 1 ''');
     } else {
       Datosusermap = await database.rawQuery(
-          '''SELECT id_usuario FROM usuario WHERE code_name = '${us.getcodename.toString()}' ''');
+          '''SELECT * FROM usuario WHERE code_name = '${us.getcodename.toString()}' ''');
     }
     //---------------------------------------------------
     print("print bd usuario - ${Datosusermap.length}");
@@ -29,6 +29,7 @@ class bdusuario implements Repository<usuario> {
       Datosusermap.length,
       (index) => usuario.fromJson({
         "id_usuario": Datosusermap[index]['id_usuario'],
+        "photo": Datosusermap[index]['photo']
       }),
     );
   }
@@ -36,7 +37,7 @@ class bdusuario implements Repository<usuario> {
   Future<int> insert(usuario us, Map<String, dynamic> jsonAtri) async {
     Database database = await bd.openDB();
     return database.rawInsert(
-        "INSERT INTO usuario (code_name,name,estade) VALUES('${us.getcodename}','${us.getname}',1);");
+        "INSERT INTO usuario (code_name,name,photo,estade) VALUES('${us.getcodename}','${us.getname}','${us.getphoto}',1);");
   }
 
   Future<usuario> read(usuario us, Map<String, dynamic> jsonAtri) async {

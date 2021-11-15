@@ -27,7 +27,16 @@ class MyApp extends StatelessWidget {
         future: us.getlist(usuario.fromJson({}), {}),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Container();
+            return Container(
+              color: Colors.white,
+              child: Center(
+                child: Image.asset(
+                  "src/iconapli.png",
+                  height: 60,
+                  width: 60,
+                ),
+              ),
+            );
           }
           if (snapshot.hasError) {
             return Center(

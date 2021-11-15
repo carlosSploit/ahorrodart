@@ -26,6 +26,7 @@ class bd {
       id_usuario INTEGER PRIMARY KEY,
       code_name TEXT,
       name TEXT,
+      photo TEXT,
       estade BLOB
       )''';
   static String tipogasto = '''CREATE TABLE tipogasto (
@@ -36,7 +37,7 @@ class bd {
   bd();
 
   static Future<Database> openDB() async {
-    return openDatabase(join(await getDatabasesPath(), "datosdb7.db"),
+    return openDatabase(join(await getDatabasesPath(), "datosdb8.db"),
         onCreate: (db, version) async {
       // eliminar tablas si esque existen
       db.execute("DROP TABLE IF EXISTS tipogasto;");
@@ -74,7 +75,7 @@ class bd {
           "INSERT INTO tipogasto (gastotipo) VALUES('Pagos de tarjetas');");
       // crea primer usuarios
       db.execute(
-          "INSERT INTO usuario (code_name,name,estade) VALUES('1465468','carlos arturo guerrero castillo',1);");
+          "INSERT INTO usuario (code_name,name,photo,estade) VALUES('1465468','carlos arturo guerrero castillo','https://i.pinimg.com/736x/38/d4/b1/38d4b11793d3ce60de5c34d5abb2f7b2.jpg',1);");
       //--------------------------------------------
       print("se comenzo a crear");
       return;
